@@ -12,7 +12,7 @@ description: Adds and fixes UI animations and micro-interactions using CSS trans
 4. View Transitions API (`document.startViewTransition`, `view-transition-name`, cross-document `@view-transition`) for route or layout changes, where the browser support target allows.
 5. An animation library only if the project already uses one. If it does not, ask before adding a dependency. For complex sequencing see the `advanced-animations` skill.
 
-Check the project's existing animation approach and its framework's built-in support (Angular `animate.enter`/`animate.leave` or `@angular/animations`, Vue `<Transition>`, React state-driven classes) before writing raw code.
+Check the project's existing animation approach and its framework's built-in support (Angular `animate.enter`/`animate.leave` or `@angular/animations`) before writing raw code.
 
 ## 2. Rules
 - Animate `transform` and `opacity` only. Avoid animating `width`, `height`, `top`, `left`, `margin` or `box-shadow` (they trigger layout or paint); use `transform: scale()`, `translate()` or a grid-rows trick (`grid-template-rows: 0fr` to `1fr`) for expanding sections.

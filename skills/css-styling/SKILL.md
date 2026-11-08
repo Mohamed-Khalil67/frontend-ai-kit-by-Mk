@@ -8,7 +8,7 @@ description: Writes and fixes CSS/SCSS for layout, responsive design, spacing, t
 ## 1. Read before writing
 - Find the project's styling system first: global stylesheet, SCSS variables or CSS custom properties, any utility framework (Tailwind, Bootstrap), and the component library in use.
 - Reuse existing tokens (colors, spacing, radius, font families) and existing classes. Add a new token only when none fits, and put it where the others live.
-- Check how component styles are scoped (Angular view encapsulation, Vue `scoped`, CSS modules). Global frameworks such as Bootstrap can collide with generic class names like `row` or `btn`, so use component-specific names.
+- Check how component styles are scoped (Angular view encapsulation, global vs component styles). Global frameworks such as Bootstrap can collide with generic class names like `row` or `btn`, so use component-specific names.
 
 ## 2. Defaults to apply
 - Layout: Grid for two-dimensional layout, Flexbox for one-dimensional. Use `gap`, not margins between siblings.

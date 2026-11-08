@@ -1,7 +1,0 @@
-{
-  "name": "nuxt-mcp",
-  "displayName": "Nuxt MCP (add-on)",
-  "version": "0.1.0",
-  "description": "Nuxt team's official remote MCP server for Nuxt docs, modules and changelog. Enable only in Nuxt projects.",
-  "author": { "name": "MK" }
-}

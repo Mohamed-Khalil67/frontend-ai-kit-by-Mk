@@ -19,13 +19,13 @@ For simple hover, fade and slide effects use `web-animations` instead.
 ## 2. Libraries
 - Use the library the project already has. If none exists, **ask before adding one** and say why (bundle size, licence, framework fit).
 - If the project's animation library publishes its own agent skill or docs (Motion does, via `npx motion-ai`), read those before coding.
-- Clean up in framework lifecycles: cancel animations, observers and RAF loops on destroy (Angular `DestroyRef`, React effect cleanup, Vue `onUnmounted`).
+- Clean up in framework lifecycles: cancel animations, observers and RAF loops on destroy (Angular `DestroyRef`).
 - Run animation code outside Angular's zone (`NgZone.runOutsideAngular`) when the project is zone-based, to avoid change-detection on every frame.
 
 ## 3. Rules
 - Same baseline as `web-animations`: animate `transform` and `opacity`, handle `prefers-reduced-motion` (disable parallax, pinning and autoplay; keep content readable and reachable).
 - Never hijack native scroll speed or break keyboard, anchor, or screen-reader navigation. Pinned sections need a non-animated fallback.
-- Create ScrollTriggers after layout is stable (fonts and images loaded) and refresh on resize. Prefer `IntersectionObserver` for simple reveal-on-scroll.
+- Create scroll-linked effects after layout is stable (fonts and images loaded) and recompute on resize. Prefer `IntersectionObserver` for simple reveal-on-scroll.
 - Keep the main thread free: no layout reads and writes interleaved in a loop; batch them. Cap canvas resolution to `devicePixelRatio <= 2`.
 - Pause or destroy offscreen animations. Lazy-load heavy libraries and 3D assets.
 - Avoid layout shift: reserve space for animated elements.
