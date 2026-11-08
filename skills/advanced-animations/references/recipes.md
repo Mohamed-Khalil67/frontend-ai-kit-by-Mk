@@ -25,19 +25,21 @@ Outside `@supports`, fall back to `IntersectionObserver` toggling a class.
 3. Set `transform: translate(dx, dy) scale(sx, sy)` to invert, then animate to `none` with `element.animate()` (Play).
 Read all rects before writing any styles.
 
-## GSAP timeline pattern
+## Sequenced timeline (Web Animations API)
 ```ts
-const ctx = gsap.context(() => {
-  const tl = gsap.timeline({ defaults: { ease: 'power2.out', duration: 0.6 } });
-  tl.from('.hero-title', { y: 40, opacity: 0 })
-    .from('.hero-sub', { y: 24, opacity: 0 }, '-=0.3')
-    .from('.hero-cta', { scale: 0.9, opacity: 0 }, '-=0.3');
-}, scope);          // scope = element ref
-// on destroy: ctx.revert();
+const opts = { duration: 600, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'both' } as const;
+const from = (y: number) => [{ opacity: 0, transform: `translateY(${y}px)` }, { opacity: 1, transform: 'none' }];
+const anims = [
+  title.animate(from(40), opts),
+  sub.animate(from(24), { ...opts, delay: 300 }),
+  cta.animate(from(24), { ...opts, delay: 600 }),
+];
+// on destroy: anims.forEach((a) => a.cancel());
 ```
+Skip or shorten the sequence when `matchMedia('(prefers-reduced-motion: reduce)').matches`.
 
-## ScrollTrigger pin
-Pin only when the section is shorter than the viewport; set `anticipatePin`, call `ScrollTrigger.refresh()` after fonts/images load, and gate with `gsap.matchMedia()` so reduced-motion and small screens skip pinning.
+## Pinned section
+Prefer `position: sticky` inside a tall wrapper, driven by a scroll-driven animation. Pin only when the content is shorter than the viewport, and skip pinning for reduced motion and small screens.
 
 ## SVG line draw
 Set `pathLength="1"`, `stroke-dasharray: 1`, animate `stroke-dashoffset` from `1` to `0`.

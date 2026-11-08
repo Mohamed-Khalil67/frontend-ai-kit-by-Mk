@@ -1,6 +1,6 @@
 ---
 name: advanced-animations
-description: Builds complex, high-end animations - scroll-driven effects, parallax, pinned sections, sequenced timelines, FLIP and shared-element transitions, SVG path and morph effects, text splitting, canvas and WebGL. Use when the user says scroll animation, scrollytelling, parallax, timeline, stagger sequence, complex animation, awwwards-style, morph, SVG animation, 3D, or GSAP/Motion. Works in any framework.
+description: Builds complex, high-end animations - scroll-driven effects, parallax, pinned sections, sequenced timelines, FLIP and shared-element transitions, SVG path and morph effects, text splitting, canvas and WebGL. Use when the user says scroll animation, scrollytelling, parallax, timeline, stagger sequence, complex animation, awwwards-style, morph, SVG animation, 3D, or a library like Motion. Works in any framework.
 ---
 
 # Advanced animations
@@ -10,16 +10,16 @@ For simple hover, fade and slide effects use `web-animations` instead.
 ## 1. Pick the technique
 | Need | First choice | Fallback |
 |---|---|---|
-| Effect tied to scroll position | CSS scroll-driven animations (`animation-timeline: scroll()` / `view()`) where the browser target allows | GSAP ScrollTrigger |
-| Multi-step sequence with precise timing | GSAP timeline or Motion `animate()` sequences | Web Animations API with `finished` promises |
+| Effect tied to scroll position | CSS scroll-driven animations (`animation-timeline: scroll()` / `view()`) where the browser target allows | `IntersectionObserver` plus the project's animation library |
+| Multi-step sequence with precise timing | Web Animations API with `finished` promises, or the project's animation library | CSS `animation-delay` chains |
 | Layout change animated smoothly | FLIP (First, Last, Invert, Play) or View Transitions | Library layout animation |
-| SVG line draw / morph | `stroke-dashoffset`, CSS `offset-path`, GSAP plugins | SMIL is deprecated-in-practice; avoid |
+| SVG line draw / morph | `stroke-dashoffset`, CSS `offset-path` | SMIL is deprecated-in-practice; avoid |
 | Particles, shaders, 3D | Canvas 2D, then WebGL (Three.js, OGL) | - |
 
 ## 2. Libraries
 - Use the library the project already has. If none exists, **ask before adding one** and say why (bundle size, licence, framework fit).
-- GSAP (free, with its plugins) and Motion both publish official agent skills. If the project uses GSAP, read the installed `gsap-*` skills (core, timeline, scrolltrigger, react, performance) before coding. If the plugin's agent refreshed them into `.claude/skills/`, use those; otherwise follow the library's own docs.
-- Clean up in framework lifecycles: kill timelines, ScrollTriggers, observers and RAF loops on destroy (Angular `DestroyRef`, React effect cleanup, Vue `onUnmounted`). Use `gsap.context()` / `matchMedia()` to scope and revert.
+- If the project's animation library publishes its own agent skill or docs (Motion does, via `npx motion-ai`), read those before coding.
+- Clean up in framework lifecycles: cancel animations, observers and RAF loops on destroy (Angular `DestroyRef`, React effect cleanup, Vue `onUnmounted`).
 - Run animation code outside Angular's zone (`NgZone.runOutsideAngular`) when the project is zone-based, to avoid change-detection on every frame.
 
 ## 3. Rules

@@ -9,7 +9,7 @@ A Claude Code plugin with frontend skills, one agent per framework and frontend 
 | Agents | `angular-dev`, `react-dev`, `vue-dev` | Framework specialists you call by name. Each preloads its framework skills plus the four below. |
 | Skills | `css-styling` | Layout, responsive design, tokens, theming, dark mode with modern CSS |
 | | `web-animations` | Transitions, keyframes, micro-interactions, View Transitions, reduced motion |
-| | `advanced-animations` | Scroll-driven, timelines, FLIP, SVG, canvas/WebGL; hands off to GSAP when used |
+| | `advanced-animations` | Scroll-driven, timelines, FLIP, SVG, canvas/WebGL |
 | | `replicate-website` | Rebuild a site's design from a URL or screenshot in your project's framework |
 | | `typescript-safety` | Strict typing rules and a typecheck gate for all three frameworks |
 | | `refresh-framework-skills` | Fetches the latest upstream skills into the project |
@@ -42,7 +42,6 @@ On first use, the framework agent offers to install the official framework skill
 | Angular | `github.com/angular/skills` | Angular team |
 | Vue | `github.com/vuejs-ai/skills` | Vue AI organization |
 | React | `github.com/vercel-labs/agent-skills` (`vercel-react-best-practices`, `vercel-composition-patterns`, `vercel-react-view-transitions`) | Vercel. The React team publishes none. |
-| GSAP (optional, if the project uses it) | `github.com/greensock/gsap-skills` | GreenSock |
 | Design (optional) | `github.com/anthropics/skills` (`frontend-design`) | Anthropic |
 
 The agents run `skills/refresh-framework-skills/scripts/refresh-skills.mjs`, which shallow-clones the repos listed in `skills/refresh-framework-skills/sources.json` at their default branch, copies the listed skill folders into `<project>/.claude/skills/`, and records each commit in `.claude/skills/.frontend-ai-kit-lock.json`. It refreshes at most once a week. It never runs upstream code, never follows symlinks and never overwrites skills it did not install. Nothing is installed without your approval first. To refresh by hand: ask "refresh the framework skills".

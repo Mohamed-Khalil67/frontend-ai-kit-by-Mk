@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Fetches the latest upstream skills for the given groups into <project>/.claude/skills.
 // Usage: node refresh-skills.mjs <group...> [--project <dir>] [--max-age-days N] [--yes] [--force]
-// Groups come from ../sources.json (angular, react, vue, gsap, design).
+// Groups come from ../sources.json (angular, react, vue, design).
 // Safety: only clones the repos listed in sources.json, never runs code from them,
 // never follows symlinks, never overwrites skill folders it did not install itself.
 // Exit codes: 0 ok, 2 approval needed (re-run with --yes after the user agrees), 1 error.

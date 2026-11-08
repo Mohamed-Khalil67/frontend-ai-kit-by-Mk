@@ -1,19 +1,19 @@
 ---
 name: refresh-framework-skills
-description: Installs or updates the latest official framework skills (Angular, Vue, React via Vercel, GSAP, Anthropic frontend-design) into the current project's .claude/skills. Use when the user says update the framework skills, install the Angular/Vue/React skills, refresh skills, or when a framework agent starts and its skills are missing or older than a week.
+description: Installs or updates the latest official framework skills (Angular, Vue, React via Vercel, Anthropic frontend-design) into the current project's .claude/skills. Use when the user says update the framework skills, install the Angular/Vue/React skills, refresh skills, or when a framework agent starts and its skills are missing or older than a week.
 ---
 
 # Refresh framework skills
 
-Skills come from public upstream repos listed in `sources.json` next to this file (the Angular team's `angular/skills`, `vuejs-ai/skills`, Vercel's React skill, GreenSock's `gsap-skills`, Anthropic's `frontend-design`). The React team publishes no skills; the React source is Vercel's.
+Skills come from public upstream repos listed in `sources.json` next to this file (the Angular team's `angular/skills`, `vuejs-ai/skills`, Vercel's React skill, Anthropic's `frontend-design`). The React team publishes no skills; the React source is Vercel's.
 
 ## Steps
-1. Detect the framework from the project's `package.json` (`@angular/core`, `react`, `vue`). Also add group `gsap` if `gsap` is a dependency.
+1. Detect the framework from the project's `package.json` (`@angular/core`, `react`, `vue`).
 2. Run (paths relative to this skill's directory; project dir is the current project):
    ```bash
    node scripts/refresh-skills.mjs <group...> --project <project-dir>
    ```
-   e.g. `angular`, `vue`, `react`, optionally `gsap` and `design`. It skips sources fetched in the last 7 days; add `--force` to refetch now.
+   e.g. `angular`, `vue`, `react`, optionally `design`. It skips sources fetched in the last 7 days; add `--force` to refetch now.
 3. **Exit code 2 means approval is needed.** The script lists third-party sources not yet installed in this project. Their files become instructions you will follow, so show the user the list and ask. Re-run with `--yes` only after the user agrees.
 4. Tell the user which skills were installed or updated and the commit of each (the script prints it; the lock file is `.claude/skills/.frontend-ai-kit-lock.json`).
 5. **Read the installed `SKILL.md` files directly** for the current task. Skills installed during a session are not preloaded until the next session starts.
