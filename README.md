@@ -12,6 +12,7 @@ A Claude Code plugin with frontend skills, one agent per framework and frontend 
 | | `advanced-animations` | Scroll-driven, timelines, FLIP, SVG, canvas/WebGL |
 | | `replicate-website` | Rebuild a site's design from a URL or screenshot in your project's framework |
 | | `typescript-safety` | Strict typing rules and a typecheck gate for all three frameworks |
+| | `frontend-orchestrator` | One entry point: you give an order, it picks the agent, skills and MCP tools, delegates and verifies |
 | | `refresh-framework-skills` | Fetches the latest upstream skills into the project |
 | MCP | Figma, Chrome DevTools, Context7 | Design to code, browser verification, current library docs |
 
@@ -28,6 +29,8 @@ Choose project or user scope when asked. Restart the session afterwards so agent
 
 In any project:
 
+- **One entry point:** `/frontend-ai-kit:frontend-orchestrator build the reviews page from <figma link>` — it detects the framework, checks which MCP servers are connected, picks the agent, skills and tools (Figma, Chrome DevTools, framework MCP), delegates and verifies. Plain-language orders like "implement this Figma" or "replicate this site" also trigger it.
+- Or call an agent directly:
 - "use angular-dev to build this Figma frame: <link>"
 - "use react-dev to make this page faster"
 - "use vue-dev to add a Pinia store for the cart"
