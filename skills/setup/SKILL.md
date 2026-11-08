@@ -17,7 +17,7 @@ Ask with AskUserQuestion, one question:
 - "No agent, skills only": use the CSS, animation, replicate-website and typescript-safety skills directly
 
 ## Step 3: Angular skills
-For `angular-dev`, ask whether to install the official Angular skills now. They come from the Angular team's public repo (`github.com/angular/skills`, listed in `refresh-framework-skills/sources.json`) and become instructions Claude follows. If the user agrees, follow the `refresh-framework-skills` skill for group `angular` and use `--yes` only because they agreed. If they decline, say the agent will ask again on first use. For "skills only", skip this step.
+For `angular-dev`, ask whether to install the official Angular skills now, and separately whether to add the optional UI UX Pro Max design skill (group `design`: a pinned third-party skill with a searchable design database and a stdlib-only Python script the agent runs; needs Python 3). They come from the Angular team's public repo (`github.com/angular/skills`, listed in `refresh-framework-skills/sources.json`) and become instructions Claude follows. If the user agrees, follow the `refresh-framework-skills` skill for group `angular` (and `design` if they chose it) and use `--yes` only because they agreed. If they decline, say the agent will ask again on first use. For "skills only", skip this step.
 
 ## Step 4: check tools
 List which of these tools you can see in this session and which you cannot, without guessing:

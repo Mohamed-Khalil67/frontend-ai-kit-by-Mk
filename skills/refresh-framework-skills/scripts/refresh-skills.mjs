@@ -47,7 +47,11 @@ for (const group of groups) {
     const known = names.every((n) => lock.skills[n]?.repo === src.repo);
     const fresh =
       known &&
-      names.every((n) => Date.now() - Date.parse(lock.skills[n].fetchedAt) < maxAgeDays * 864e5);
+      names.every((n) =>
+        src.ref
+          ? lock.skills[n].commit === src.ref
+          : Date.now() - Date.parse(lock.skills[n].fetchedAt) < maxAgeDays * 864e5,
+      );
     if (fresh && !force) {
       console.log(`up to date: ${src.repo} (${names.join(', ')})`);
       continue;
@@ -76,11 +80,21 @@ if (pending.length) {
 function fetchSource(src) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fak-'));
   try {
-    execFileSync('git', ['-c', 'core.symlinks=false', 'clone', '--depth', '1', '--quiet', src.repo, tmp], {
+    const gitOpts = {
       stdio: ['ignore', 'inherit', 'inherit'],
       env: { ...process.env, GIT_TERMINAL_PROMPT: '0' },
-    });
+    };
+    if (src.ref) {
+      // Pinned source: fetch exactly the reviewed commit, never the moving default branch.
+      if (!/^[0-9a-f]{40}$/.test(src.ref)) fail(`ref must be a full commit sha: ${src.ref}`);
+      execFileSync('git', ['-C', tmp, 'init', '--quiet'], gitOpts);
+      execFileSync('git', ['-C', tmp, 'fetch', '--depth', '1', '--quiet', src.repo, src.ref], gitOpts);
+      execFileSync('git', ['-C', tmp, '-c', 'core.symlinks=false', 'checkout', '--quiet', 'FETCH_HEAD'], gitOpts);
+    } else {
+      execFileSync('git', ['-c', 'core.symlinks=false', 'clone', '--depth', '1', '--quiet', src.repo, tmp], gitOpts);
+    }
     const sha = execFileSync('git', ['-C', tmp, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+    if (src.ref && sha !== src.ref) fail(`Pinned ref mismatch: wanted ${src.ref}, got ${sha}`);
     for (const s of src.skills) {
       if (!safeName.test(s.name)) fail(`Bad skill name ${s.name}`);
       const from = path.resolve(tmp, s.path);

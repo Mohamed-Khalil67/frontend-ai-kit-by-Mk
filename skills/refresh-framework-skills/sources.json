@@ -1,5 +1,5 @@
 {
-  "_comment": "Official/upstream skill sources. Fetched at the repo's default branch HEAD; the commit is recorded in the project's lock file. Add a group here to support a new source.",
+  "_comment": "Upstream skill sources. A source without \"ref\" is fetched at the default branch HEAD and refreshed weekly; a source with a full-commit \"ref\" is pinned and only changes when you bump the ref after reviewing the diff. The commit is recorded in the project's lock file.",
   "angular": [
     {
       "repo": "https://github.com/angular/skills",
@@ -12,10 +12,11 @@
   ],
   "design": [
     {
-      "repo": "https://github.com/anthropics/skills",
-      "publisher": "Anthropic",
+      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "publisher": "nextlevelbuilder (third party, MIT). Includes Python scripts the skill runs locally, so it is pinned.",
+      "ref": "4f2dbb67e64969a9a30ab00742f2d55d66ddec2b",
       "skills": [
-        { "path": "skills/frontend-design", "name": "frontend-design" }
+        { "path": ".claude/skills/ui-ux-pro-max", "name": "ui-ux-pro-max" }
       ]
     }
   ]

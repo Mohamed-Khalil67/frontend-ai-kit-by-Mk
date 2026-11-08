@@ -48,7 +48,7 @@ On first use, the agent offers to install the official Angular skills into the p
 | Source | Publisher |
 |---|---|
 | `github.com/angular/skills` (`angular-developer`, `angular-new-app`) | Angular team |
-| `github.com/anthropics/skills` (`frontend-design`, optional) | Anthropic |
+| `github.com/nextlevelbuilder/ui-ux-pro-max-skill` (`ui-ux-pro-max`, optional, pinned to a reviewed commit) | nextlevelbuilder (third party, MIT). A searchable design database plus stdlib-only Python scripts; needs Python 3. |
 
 The agent runs `skills/refresh-framework-skills/scripts/refresh-skills.mjs`, which shallow-clones the repos listed in `skills/refresh-framework-skills/sources.json` at their default branch, copies the listed skill folders into `<project>/.claude/skills/`, and records each commit in `.claude/skills/.frontend-ai-kit-lock.json`. It refreshes at most once a week. It never runs upstream code, never follows symlinks and never overwrites skills it did not install. Nothing is installed without your approval first. To refresh by hand: ask "refresh the framework skills".
 
