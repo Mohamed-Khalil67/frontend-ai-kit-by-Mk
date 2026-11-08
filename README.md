@@ -12,7 +12,7 @@ A Claude Code plugin with frontend skills, one agent per framework and frontend 
 | | `advanced-animations` | Scroll-driven, timelines, FLIP, SVG, canvas/WebGL |
 | | `replicate-website` | Rebuild a site's design from a URL or screenshot in your project's framework |
 | | `typescript-safety` | Strict typing rules and a typecheck gate for all three frameworks |
-| | `frontend-orchestrator` | One entry point: you give an order, it picks the agent, skills and MCP tools, delegates and verifies |
+| | `setup` | Guided first-time setup: pick the agent, install framework skills, check MCP servers, get a to-do checklist |
 | | `refresh-framework-skills` | Fetches the latest upstream skills into the project |
 | MCP | Figma, Chrome DevTools, Context7 | Design to code, browser verification, current library docs |
 
@@ -23,14 +23,19 @@ A Claude Code plugin with frontend skills, one agent per framework and frontend 
 /plugin install frontend-ai-kit@frontend-ai-kit-by-mk
 ```
 
-Choose project or user scope when asked. Restart the session afterwards so agents and MCP servers load. To use a local copy instead: `/plugin marketplace add C:\Workspace\frontend-ai-kit`.
+Choose project or user scope when asked. Restart the session so agents and MCP servers load, then run the guided setup in your project:
+
+```
+/frontend-ai-kit:setup
+```
+
+It detects your framework, asks which agent to use (`angular-dev`, `react-dev`, `vue-dev` or skills only), offers to install the official framework skills, checks which MCP servers are connected, and ends with a checklist of what you still need (Figma sign-in, framework MCP add-on, restart).
+ To use a local copy instead: `/plugin marketplace add C:\Workspace\frontend-ai-kit`.
 
 ## Use
 
 In any project:
 
-- **One entry point:** `/frontend-ai-kit:frontend-orchestrator build the reviews page from <figma link>` — it detects the framework, checks which MCP servers are connected, picks the agent, skills and tools (Figma, Chrome DevTools, framework MCP), delegates and verifies. Plain-language orders like "implement this Figma" or "replicate this site" also trigger it.
-- Or call an agent directly:
 - "use angular-dev to build this Figma frame: <link>"
 - "use react-dev to make this page faster"
 - "use vue-dev to add a Pinia store for the cart"
