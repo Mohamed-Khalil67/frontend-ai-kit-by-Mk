@@ -1,0 +1,9 @@
+{
+  "name": "frontend-ai-kit",
+  "displayName": "Frontend AI Kit by MK",
+  "version": "0.1.0",
+  "description": "Frontend skills (CSS, animations, advanced animations, site replication), one agent per framework (Angular, React, Vue) and MCP servers for design-to-code and browser verification.",
+  "author": { "name": "MK" },
+  "repository": "https://github.com/Mohamed-Khalil67/frontend-ai-kit-by-Mk",
+  "keywords": ["frontend", "angular", "react", "vue", "css", "animation", "figma"]
+}

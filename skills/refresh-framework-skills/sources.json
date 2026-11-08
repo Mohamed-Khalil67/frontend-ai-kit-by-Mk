@@ -1,0 +1,60 @@
+{
+  "_comment": "Official/upstream skill sources. Fetched at the repo's default branch HEAD; the commit is recorded in the project's lock file. Add a group here to support a new source.",
+  "angular": [
+    {
+      "repo": "https://github.com/angular/skills",
+      "publisher": "Angular team (official)",
+      "skills": [
+        { "path": "angular-developer", "name": "angular-developer" },
+        { "path": "angular-new-app", "name": "angular-new-app" }
+      ]
+    }
+  ],
+  "vue": [
+    {
+      "repo": "https://github.com/vuejs-ai/skills",
+      "publisher": "Vue AI organization",
+      "skills": [
+        { "path": "skills/vue-best-practices", "name": "vue-best-practices" },
+        { "path": "skills/vue-router-best-practices", "name": "vue-router-best-practices" },
+        { "path": "skills/vue-pinia-best-practices", "name": "vue-pinia-best-practices" },
+        { "path": "skills/vue-testing-best-practices", "name": "vue-testing-best-practices" },
+        { "path": "skills/vue-debug-guides", "name": "vue-debug-guides" }
+      ]
+    }
+  ],
+  "react": [
+    {
+      "repo": "https://github.com/vercel-labs/agent-skills",
+      "publisher": "Vercel (third party: the React team publishes no skills)",
+      "skills": [
+        { "path": "skills/react-best-practices", "name": "react-best-practices" }
+      ]
+    }
+  ],
+  "gsap": [
+    {
+      "repo": "https://github.com/greensock/gsap-skills",
+      "publisher": "GreenSock (official GSAP)",
+      "skills": [
+        { "path": "skills/gsap-core", "name": "gsap-core" },
+        { "path": "skills/gsap-timeline", "name": "gsap-timeline" },
+        { "path": "skills/gsap-scrolltrigger", "name": "gsap-scrolltrigger" },
+        { "path": "skills/gsap-plugins", "name": "gsap-plugins" },
+        { "path": "skills/gsap-utils", "name": "gsap-utils" },
+        { "path": "skills/gsap-react", "name": "gsap-react" },
+        { "path": "skills/gsap-performance", "name": "gsap-performance" },
+        { "path": "skills/gsap-frameworks", "name": "gsap-frameworks" }
+      ]
+    }
+  ],
+  "design": [
+    {
+      "repo": "https://github.com/anthropics/skills",
+      "publisher": "Anthropic",
+      "skills": [
+        { "path": "skills/frontend-design", "name": "frontend-design" }
+      ]
+    }
+  ]
+}

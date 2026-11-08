@@ -1,0 +1,12 @@
+{
+  "name": "frontend-ai-kit-by-mk",
+  "owner": { "name": "MK" },
+  "description": "Frontend AI Kit by MK: frontend skills, framework agents and MCP servers.",
+  "plugins": [
+    {
+      "name": "frontend-ai-kit",
+      "source": "./",
+      "description": "Frontend skills, framework agents (Angular, React, Vue) and frontend MCP servers by MK."
+    }
+  ]
+}
