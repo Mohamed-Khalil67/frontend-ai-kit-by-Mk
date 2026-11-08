@@ -1,0 +1,7 @@
+{
+  "name": "next-mcp",
+  "displayName": "Next.js DevTools MCP (add-on)",
+  "version": "0.1.0",
+  "description": "Vercel's official Next.js DevTools MCP: runtime errors, logs, routes and docs from a running dev server. Needs Next.js 16 or later. Enable only in Next.js projects.",
+  "author": { "name": "MK" }
+}

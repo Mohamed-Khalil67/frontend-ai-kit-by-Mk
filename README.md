@@ -11,6 +11,7 @@ A Claude Code plugin with frontend skills, one agent per framework and frontend 
 | | `web-animations` | Transitions, keyframes, micro-interactions, View Transitions, reduced motion |
 | | `advanced-animations` | Scroll-driven, timelines, FLIP, SVG, canvas/WebGL; hands off to GSAP when used |
 | | `replicate-website` | Rebuild a site's design from a URL or screenshot in your project's framework |
+| | `typescript-safety` | Strict typing rules and a typecheck gate for all three frameworks |
 | | `refresh-framework-skills` | Fetches the latest upstream skills into the project |
 | MCP | Figma, Chrome DevTools, Context7 | Design to code, browser verification, current library docs |
 
@@ -40,7 +41,7 @@ On first use, the framework agent offers to install the official framework skill
 |---|---|---|
 | Angular | `github.com/angular/skills` | Angular team |
 | Vue | `github.com/vuejs-ai/skills` | Vue AI organization |
-| React | `github.com/vercel-labs/agent-skills` (`react-best-practices`) | Vercel. The React team publishes none. |
+| React | `github.com/vercel-labs/agent-skills` (`vercel-react-best-practices`, `vercel-composition-patterns`, `vercel-react-view-transitions`) | Vercel. The React team publishes none. |
 | GSAP (optional, if the project uses it) | `github.com/greensock/gsap-skills` | GreenSock |
 | Design (optional) | `github.com/anthropics/skills` (`frontend-design`) | Anthropic |
 
@@ -53,9 +54,28 @@ These files become instructions Claude follows, so skim them the first time. Dec
 - **Figma** (`https://mcp.figma.com/mcp`): sign in with `/mcp`, then Authenticate.
 - **Chrome DevTools** (`npx chrome-devtools-mcp@latest`): needs Node and Chrome. It controls its own Chrome instance.
 - **Context7** (`https://mcp.context7.com/mcp`): works without a key; an optional key raises rate limits.
-- **Angular CLI MCP (Angular projects only, not bundled):** `claude mcp add angular-cli -- npx -y @angular/cli mcp`. Docs: https://angular.dev/ai/mcp. Not bundled because it is unverified outside an Angular workspace.
 - On Windows, if `npx`-based servers fail to start, change the entry in `.mcp.json` to `"command": "cmd", "args": ["/c", "npx", ...]`.
 - **Motion (optional):** Motion publishes its own skill and installer, `npx motion-ai`. Run it yourself if you use the Motion library.
+
+### Framework MCP add-ons (install per project)
+
+Plugin agents cannot scope an MCP server to themselves (the docs say `mcpServers` is ignored for plugin agents), so framework MCPs are separate add-on plugins. Install them at **project scope** in matching projects only:
+
+| Add-on | Server | Publisher | Use for |
+|---|---|---|---|
+| `angular-mcp` | `npx -y @angular/cli mcp` | Angular team | `get_best_practices`, `search_documentation`, `list_projects`, dev server and build tools. Docs: https://angular.dev/ai/mcp |
+| `nuxt-mcp` | `https://nuxt.com/mcp` | Nuxt team | Nuxt docs, modules, changelog |
+| `next-mcp` | `npx -y next-devtools-mcp@latest` | Vercel | Runtime errors, logs, routes. Needs Next.js 16+ and a running dev server |
+
+```
+/plugin install angular-mcp@frontend-ai-kit-by-mk
+```
+
+There is **no official MCP for React core or Vue core**; the agents use Context7 and the framework docs for those. Not bundled: shadcn's MCP (`npx shadcn@latest mcp`, only useful with a `components.json`) and community TypeScript or Vue DevTools servers (not well established).
+
+## Type safety
+
+The `typescript-safety` skill is preloaded by all three agents: strict compiler settings, no `any`, validated API data, typed props, inputs, forms and stores, and a typecheck gate before finishing.
 
 ## Other tools (Cursor, Antigravity)
 

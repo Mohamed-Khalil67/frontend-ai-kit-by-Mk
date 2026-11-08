@@ -1,0 +1,7 @@
+{
+  "name": "angular-mcp",
+  "displayName": "Angular CLI MCP (add-on)",
+  "version": "0.1.0",
+  "description": "Angular team's official CLI MCP server: get_best_practices, search_documentation, list_projects, dev server and build tools. Enable only in Angular projects.",
+  "author": { "name": "MK" }
+}

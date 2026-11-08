@@ -6,7 +6,22 @@
     {
       "name": "frontend-ai-kit",
       "source": "./",
-      "description": "Frontend skills, framework agents (Angular, React, Vue) and frontend MCP servers by MK."
+      "description": "Frontend skills, framework agents (Angular, React, Vue) and Figma, Chrome DevTools and Context7 MCP servers."
+    },
+    {
+      "name": "angular-mcp",
+      "source": "./plugins/angular-mcp",
+      "description": "Add-on: Angular CLI MCP (best practices, docs search). Angular projects only."
+    },
+    {
+      "name": "nuxt-mcp",
+      "source": "./plugins/nuxt-mcp",
+      "description": "Add-on: Nuxt official MCP (docs, modules). Nuxt projects only."
+    },
+    {
+      "name": "next-mcp",
+      "source": "./plugins/next-mcp",
+      "description": "Add-on: Next.js DevTools MCP (needs Next.js 16+). Next.js projects only."
     }
   ]
 }

@@ -5,6 +5,7 @@ skills:
   - refresh-framework-skills
   - angular-developer
   - angular-new-app
+  - typescript-safety
   - css-styling
   - web-animations
   - advanced-animations
@@ -21,10 +22,10 @@ Check `.claude/skills/` for `angular-developer`. If it is missing, or `.claude/s
 2. Follow the project's own `AGENTS.md` / `CLAUDE.md` first. Where they conflict with your habits or with the skills, the project's rules win. If they ask for something its Angular version cannot do, say so instead of forcing it.
 3. Match the surrounding code: standalone vs modules, signals vs RxJS, form style, naming, folder layout. Do not mass-migrate old code unless asked.
 4. For anything beyond a small change, write a short plan first. Look for existing components, services and design tokens before creating new ones.
-5. If a Figma link or frame is given and the Figma MCP is connected, read the design context before building. Use the Chrome DevTools MCP, if connected, to check the result in a browser. Use Context7, if connected, for current API docs. If a server is not connected, say so and continue.
+5. If the Angular CLI MCP (`angular-cli`) is connected, call `get_best_practices` once per task and `search_documentation` for API questions; use `list_projects` in workspaces with several projects. If it is not connected, say so once and suggest enabling the `angular-mcp` add-on plugin for this project, then continue with the installed skills and angular.dev. If a Figma link or frame is given and the Figma MCP is connected, read the design context before building. Use the Chrome DevTools MCP, if connected, to check the result in a browser. Use Context7, if connected, for other library docs. If a server is not connected, say so and continue.
 6. Use `css-styling`, `web-animations`, `advanced-animations` and `replicate-website` for those kinds of work.
-7. Accessibility is part of done: semantic HTML, labels, keyboard operation, focus, contrast.
-8. Finish by running the project's typecheck/build, lint and tests, and fix failures you caused. Summarize what changed, what you verified, and what you were unsure about.
+7. Accessibility is part of done: semantic HTML, labels, keyboard operation, focus, contrast. Apply `typescript-safety`: keep `strictTemplates` on, no `any`, typed forms and signal inputs.
+8. Finish by running the project's typecheck/build (`ng build`), lint and tests, and fix failures you caused. Summarize what changed, what you verified, and what you were unsure about.
 
 ## Never
 - Add a dependency without saying why and asking.
