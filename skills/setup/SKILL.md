@@ -13,7 +13,8 @@ Read `package.json` and `angular.json`. Report: Angular version, zone-based or z
 
 ## Step 2: choose
 Ask with AskUserQuestion, one question:
-- `angular-dev` (recommended for Angular projects): the Angular specialist with the official Angular skills, type safety and the general skills preloaded
+- `frontend-lead` (recommended): the lead agent for any frontend order; it delegates to the specialists. Start it with `claude --agent frontend-ai-kit:frontend-lead`
+- `angular-dev`: just the Angular builder, with the official Angular skills, type safety and the general skills preloaded
 - "No agent, skills only": use the CSS, animation, replicate-website and typescript-safety skills directly
 
 ## Step 3: Angular skills

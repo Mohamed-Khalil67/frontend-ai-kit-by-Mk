@@ -1,12 +1,17 @@
 # Frontend AI Kit by MK
 
-A Claude Code plugin for Angular frontend work: one Angular agent, frontend skills and MCP servers.
+A Claude Code plugin for Angular frontend work: a lead agent that delegates to specialist agents, plus frontend skills and MCP servers.
 
 ## What is inside
 
 | Part | Name | Purpose |
 |---|---|---|
-| Agent | `angular-dev` | Angular specialist you call by name. Preloads the official Angular skills, type safety and the skills below. |
+| Lead agent | `frontend-lead` | The "super agent": takes any frontend order, plans it, delegates to the specialists below, verifies, and reports. Run it as the main agent. |
+| Specialists | `angular-dev` | Builder: components, services, routes, forms, signals. Preloads the Angular skills, type safety, patterns and your habits. |
+| | `ui-stylist` | CSS, layout, tokens, Figma fidelity, replicating a site's look |
+| | `motion-dev` | Transitions, scroll-driven effects, timelines, performance of motion |
+| | `a11y-reviewer` | Read-only WCAG AA review; never edits files |
+| | `perf-auditor` | Read-only performance audit; measures before it recommends |
 | Skills | `setup` | Guided first-time setup: choose the agent, install the Angular skills, check MCP servers, get a to-do checklist |
 | | `css-styling` | Layout, responsive design, tokens, theming, dark mode with modern CSS |
 | | `web-animations` | Transitions, keyframes, micro-interactions, View Transitions, reduced motion |
@@ -37,6 +42,17 @@ It confirms your Angular version and commands, asks whether to use `angular-dev`
 To use a local copy instead: `/plugin marketplace add C:\Workspace\frontend-ai-kit`.
 
 ## Use
+
+**The lead agent (recommended):** start a session with it as the main agent:
+
+```
+claude --agent frontend-ai-kit:frontend-lead
+```
+
+Then give orders in plain language: "implement this Figma frame: <link>", "add a courses page with search", "review the last change for accessibility". It checks your versions and connected tools, picks specialists, runs independent ones in parallel, and verifies the result. If the prefixed name is not found, try `--agent frontend-lead`. Because it replaces the default session agent only when you pass the flag, nothing changes for sessions that don't use it. A plugin can also set a default agent in its own `settings.json`; this kit does not, so it never takes over your sessions.
+
+**Specialists directly:**
+
 
 - "use angular-dev to build this Figma frame: <link>"
 - "use angular-dev to add a reviews page"
@@ -87,4 +103,4 @@ This plugin format is for Claude Code. The skills in `skills/` follow the Agent 
 claude plugin validate .
 ```
 
-Each skill is `skills/<name>/SKILL.md`; the agent is `agents/angular-dev.md`. No licence is set yet; add one before making the repo public.
+Each skill is `skills/<name>/SKILL.md`; each agent is `agents/<name>.md`. Manual test scenarios are in `evals/README.md`. No licence is set yet; add one before making the repo public.
