@@ -13,6 +13,8 @@ A Claude Code plugin for Angular frontend work: one Angular agent, frontend skil
 | | `advanced-animations` | Scroll-driven, timelines, FLIP, SVG, canvas/WebGL |
 | | `replicate-website` | Rebuild a site's design from a URL or screenshot in your Angular project |
 | | `typescript-safety` | Strict typing rules and a typecheck gate for Angular |
+| | `angular-patterns` | AsyncState unions and `@let` narrowing, declarative RxJS streams, signals with `ngModel`, `ng serve` port collisions on Windows |
+| | `my-coding-habits` | The owner's personal Angular/TypeScript habits; the agent also learns new ones from corrections (user-scope memory) |
 | | `refresh-framework-skills` | Fetches the latest official Angular skills into the project |
 | MCP | Figma, Chrome DevTools, Context7 | Design to code, browser verification, current library docs |
 | Add-on plugin | `angular-mcp` | The Angular team's CLI MCP (best practices, docs search) |
